@@ -15,6 +15,15 @@ wget -qO- https://github.com/manzari/raspotify-monitor/raw/master/install/instal
 sudo apt-get install -y python3-pip nginx
 sudo -H pip3 install -r requirements.txt
 ```
+#### Download and extract files
+Not that you can also install older [releases](https://github.com/manzari/raspotify-monitor/releases) instead of the latest master
+```bash
+    wget https://github.com/manzari/raspotify-monitor/archive/master.zip
+    unzip master.zip
+    rm master.zip
+    mv raspotify-monitor-master raspotify-monitor
+
+```
 #### Copy config files
 ```bash
 sudo cp nginx.conf /etc/nginx/nginx.conf
