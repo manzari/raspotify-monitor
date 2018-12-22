@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Refresh" content="{{ refreshtime }}">
+    <title>RaspotifyStatus</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        .codebox {
+            width: 90%;
+            margin: 20px auto 0 auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+        .code {
+            margin: 0;
+            padding: 5px;
+            list-style: none;
+            background: #151515;
+            color: #45D42A;
+            font: 0.8em 'Andale Mono', Consolas, 'Courier New';
+            line-height: 1.6em;
+
+            -webkit-border-bottom-right-radius: 3px;
+            -webkit-border-bottom-left-radius: 3px;
+            -moz-border-radius-bottomright: 3px;
+            -moz-border-radius-bottomleft: 3px;
+            border-bottom-right-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+        .code li {
+            word-wrap: break-word;
+            position: relative;
+            padding: 0 0 0 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="text-center">
+    <br>
+    <p>{% if runstatus %}✔{% else %}❌{% endif %}Service Running</p>
+    <p>{% if listenstatus %}✔{% else %}❌{% endif %} Listening</p>
+    <p>{% if establishedstatus %}✔{% else %}❌{% endif %} Connection Established</p>
+    <br>
+    <div class="container">
+        <button id="start" class="btn btn-success">Start</button>
+        <button id="stop" class="btn btn-danger">Stop</button>
+        <button id="restart" class="btn btn-warning">Restart</button>
+    </div>
+</div>
+<div class="codebox">
+    <ul class="code">
+        {% for line in statuslines %}
+            <li>{{ line }}</li>
+        {% endfor %}
+    </ul>
+</div>
+<script>
+    $("#start").click(function () {
+        $.get("/start")
+    });
+    $("#stop").click(function () {
+        $.get("/stop")
+    });
+    $("#restart").click(function () {
+        $.get("/restart")
+    });
+</script>
+</body>
+</html>

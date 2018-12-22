@@ -1,0 +1,17 @@
+[Unit]
+Description=gunicorn daemon for raspotify-monitor
+After=network.target
+
+[Service]
+PIDFile=/run/gunicorn/pid
+User=pi
+Group=pi
+RuntimeDirectory=/home/pi/raspotify-monitor
+WorkingDirectory=/home/pi/raspotify-monitor
+ExecStart=/usr/bin/sudo gunicorn --bind 127.0.0.1:8000 raspotify-monitor:app
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
