@@ -3,9 +3,22 @@ A simple monitoring app for the awesome [raspotify client](https://github.com/dt
 
 ![](/screenshot.png?raw=true)
 
+## Introduction
+raspotify-monitor is not a very advanced application, it was written in a hurry, executes bash commands and does even worse things so all contributions are welcome.
+The motivation behind writing this was that librespot was crashing so often that it got annoying to restert raspotify manually.
+
+## Checks
+**✔ Service Running** states that the service is active and running
+
+**✔ Listening** states that the serivice is listening on one or more ports
+
+**✔ Connection Established** states that the server has established one or more connections
+
 ## Installation
 ### Fast
 Open a new ssh session to the raspotify host and navigate to your home directory then run the following command
+
+⚠️ deletes existing installations ⚠️
 ```bash
 wget -qO- https://github.com/manzari/raspotify-monitor/raw/master/install/install.sh | bash
 ```
@@ -14,15 +27,6 @@ wget -qO- https://github.com/manzari/raspotify-monitor/raw/master/install/instal
 ```bash
 sudo apt-get install -y python3-pip nginx
 sudo -H pip3 install -r requirements.txt
-```
-#### Download and extract files
-Not that you can also install older [releases](https://github.com/manzari/raspotify-monitor/releases) instead of the latest master
-```bash
-    wget https://github.com/manzari/raspotify-monitor/archive/master.zip
-    unzip master.zip
-    rm master.zip
-    mv raspotify-monitor-master raspotify-monitor
-
 ```
 #### Copy config files
 ```bash
